@@ -1,0 +1,79 @@
+.panel {
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.emailRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.email:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.hint {
+  margin-top: 0.55rem;
+  color: var(--ink-soft);
+}
+
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+.channel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.channel a,
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: border-color 180ms var(--ease), background-color 180ms var(--ease);
+}
+
+.channels a:hover {
+  border-color: var(--ink);
+  background: var(--bg);
+}
+
+.location {
+  color: var(--ink-soft);
+}
+
+@media (min-width: 800px) {
+  .panel {
+    padding: 2rem 1.8rem;
+  }
+}

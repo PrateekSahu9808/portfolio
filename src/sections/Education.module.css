@@ -1,0 +1,60 @@
+.layout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.block,
+.achievements {
+  min-width: 0;
+}
+
+.label {
+  margin-bottom: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.card {
+  padding: 1.15rem 1.15rem 1.05rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+
+.degree {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.school {
+  margin-top: 0.2rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.meta {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.certs,
+.achieveList {
+  display: grid;
+  gap: 0.7rem;
+}
+
+@media (min-width: 800px) {
+  .achieveList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 799px) {
+  .achieveList {
+    grid-template-columns: 1fr;
+  }
+}

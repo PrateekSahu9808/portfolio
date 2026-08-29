@@ -1,0 +1,49 @@
+.section {
+  padding: 4.5rem 0;
+  scroll-margin-top: calc(var(--header-h) + 0.75rem);
+  border-top: 1px solid var(--line);
+}
+
+.header {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.75rem;
+  color: var(--mark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::after {
+  content: '';
+  width: 2.25rem;
+  height: 1px;
+  background: var(--mark);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3vw, 2.45rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.intro {
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
+  max-width: 38rem;
+}
+
+@media (min-width: 900px) {
+  .section {
+    padding: 5.75rem 0;
+  }
+}
