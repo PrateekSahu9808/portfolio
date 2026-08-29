@@ -7,6 +7,7 @@ import { Projects } from './sections/Projects';
 import { Skills } from './sections/Skills';
 import { Education } from './sections/Education';
 import { Contact } from './sections/Contact';
+import { BackToTop } from './components/BackToTop';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

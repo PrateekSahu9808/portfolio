@@ -5,9 +5,9 @@ export const profile = {
   title: 'Frontend Developer',
   location: 'Bengaluru, India',
   experienceYears: '3+ years',
-  email: 'sahuprateek59776@gmail.com',
-  phone: '+91 81972 59776',
-  phoneHref: 'tel:+918197259776',
+  email: 'mailprateeksahu@gmail.com',
+  phone: '+91 91650 16152',
+  phoneHref: 'tel:+919165016152',
   resumeUrl: '/PrateekSahu_Resume.pdf',
   resumeFileName: 'PrateekSahu_Resume.pdf',
   currentRole: 'Software Engineer II',
@@ -22,7 +22,7 @@ export const profile = {
   about: [
     'I am a frontend developer with 3+ years of experience shipping scalable React.js, TypeScript, and Next.js applications. My work is centered on micro frontend architecture, reusable component systems, and Redux Toolkit / RTK Query — with a consistent focus on performance and design consistency in Agile product teams.',
     'At FireFlink I worked as Software Engineer II on a multi-module micro frontend platform: independent deployments across 5+ enterprise modules, a Storybook component library used across those apps, Core Web Vitals work, and WCAG-compliant UI. I also mentored four junior developers through code reviews and React performance practices.',
-    'Previously at Test Yantra I built responsive React interfaces, REST-backed forms, tables, filters, and dashboards, and managed application state with Redux. Across both roles I collaborated with backend and design partners on authentication, RBAC, workflow UI, and pixel-accurate implementation from Figma.',
+    'Previously at Test Yantra I worked as a Software Engineer on responsive React interfaces, REST-backed forms, tables, filters, and dashboards, after a Software Development Trainee period (Dec 2022 – May 2023). Across these roles I collaborated with backend and design partners on authentication, RBAC, workflow UI, and pixel-accurate implementation from Figma.',
   ],
   highlights: [
     { label: 'Experience', value: '3+ years' },
@@ -46,6 +46,7 @@ export const experience = [
     company: 'FireFlink Pvt. Ltd.',
     parent: null,
     role: 'Software Engineer II',
+    badge: null,
     location: 'Bengaluru, India',
     start: 'July 2024',
     end: 'August 2026',
@@ -79,6 +80,7 @@ export const experience = [
     company: 'Test Yantra Pvt. Ltd.',
     parent: null,
     role: 'Software Engineer',
+    badge: null,
     location: 'Bengaluru, India',
     start: 'May 2023',
     end: 'June 2024',
@@ -99,6 +101,22 @@ export const experience = [
       'Redux',
       'REST APIs',
     ],
+  },
+  {
+    id: 'testyantra-trainee',
+    company: 'Test Yantra Pvt. Ltd.',
+    parent: null,
+    role: 'Software Development Trainee',
+    badge: 'Training',
+    location: 'Bengaluru, India',
+    start: 'December 2022',
+    end: 'May 2023',
+    summary:
+      'Hands-on software development training before moving into the Software Engineer role.',
+    bullets: [
+      'Completed guided coding assignments and mini-projects under senior developer mentorship to build practical proficiency in web development fundamentals.',
+    ],
+    technologies: [],
   },
 ] as const;
 

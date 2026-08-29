@@ -1,13 +1,42 @@
 .timeline {
+  --rail: 0.7rem;
+  --gutter: 2.15rem;
+  position: relative;
   display: grid;
   gap: 1.25rem;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 var(--gutter);
   list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  left: var(--rail);
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
 }
 
 .item {
   position: relative;
+}
+
+.item::before {
+  content: '';
+  position: absolute;
+  top: 1.45rem;
+  left: calc(var(--rail) - var(--gutter));
+  z-index: 1;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: transparent;
+  box-sizing: border-box;
+  transform: translateX(-50%);
 }
 
 .card {
@@ -32,6 +61,12 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.badge {
+  color: var(--ink-soft);
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 .company {
@@ -89,32 +124,13 @@
 
 @media (min-width: 800px) {
   .timeline {
-    position: relative;
-    margin-left: 0.65rem;
-    padding-left: 1.8rem;
+    --rail: 0.85rem;
+    --gutter: 2.5rem;
     gap: 1.6rem;
   }
 
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.4rem;
-    bottom: 0.4rem;
-    width: 1px;
-    background: var(--line);
-  }
-
   .item::before {
-    content: '';
-    position: absolute;
-    left: -1.95rem;
-    top: 1.55rem;
-    width: 0.7rem;
-    height: 0.7rem;
-    border: 2px solid var(--accent);
-    border-radius: 99px;
-    background: var(--bg);
+    top: 1.7rem;
   }
 
   .card {

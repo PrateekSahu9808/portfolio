@@ -1,0 +1,58 @@
+.button {
+  position: fixed;
+  z-index: 30;
+  right: max(1.25rem, env(safe-area-inset-right, 0px));
+  bottom: max(1.25rem, calc(1.25rem + env(safe-area-inset-bottom, 0px)));
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  line-height: 0;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 200ms var(--ease),
+    transform 200ms var(--ease),
+    background-color 180ms var(--ease);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.icon svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  max-width: none;
+}
+
+.button:hover {
+  background: var(--accent-hover);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .visible {
+    transform: none;
+    transition: none;
+  }
+}

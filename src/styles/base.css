@@ -6,7 +6,8 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light dark;
+  color-scheme: dark;
+  background: #000000;
 }
 
 html:focus-within {
@@ -129,11 +130,12 @@ ul {
 
 .btn--primary {
   background: var(--accent);
-  color: var(--bg-elevated);
+  color: var(--on-accent);
 }
 
 .btn--primary:hover {
   background: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .btn--secondary {
@@ -176,7 +178,7 @@ ul {
   padding: 0.35rem 0.7rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--bg-elevated);
+  background: var(--bg-muted);
   color: var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 500;
