@@ -15,7 +15,7 @@ export const profile = {
   currentDates: 'July 2024 — August 2026',
   social: {
     github: 'https://github.com/PrateekSahu9808',
-    linkedin: 'https://www.linkedin.com/in/prateek-sahu/',
+    linkedin: 'https://www.linkedin.com/in/prateek-sahu-384b44170/',
   },
   heroIntro:
     'Frontend developer with 3+ years of experience building scalable, performant web applications in React.js, TypeScript, and Next.js. I specialize in micro frontend architecture, reusable component systems, and state management with Redux Toolkit and RTK Query.',
