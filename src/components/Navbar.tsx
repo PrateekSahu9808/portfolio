@@ -71,6 +71,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={`${styles.navLink} ${active === link.href.slice(1) ? styles.active : ''}`}
+              aria-current={active === link.href.slice(1) ? 'location' : undefined}
             >
               {link.label}
             </a>
@@ -106,7 +107,13 @@ export function Navbar() {
       >
         <nav className={styles.mobileNav} aria-label="Mobile">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={styles.mobileLink} onClick={close}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={`${styles.mobileLink} ${active === link.href.slice(1) ? styles.mobileActive : ''}`}
+              aria-current={active === link.href.slice(1) ? 'location' : undefined}
+              onClick={close}
+            >
               {link.label}
             </a>
           ))}

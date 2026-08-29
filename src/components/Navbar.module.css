@@ -79,10 +79,14 @@
   transition: color 180ms var(--ease), background-color 180ms var(--ease);
 }
 
-.navLink:hover,
-.active {
+.navLink:hover {
   color: var(--ink);
   background: var(--bg-muted);
+}
+
+.active {
+  color: var(--on-accent);
+  background: var(--accent);
 }
 
 .cta {
@@ -155,6 +159,10 @@
   font-weight: 700;
   text-decoration: none;
   border-bottom: 1px solid var(--line);
+}
+
+.mobileActive {
+  color: var(--accent);
 }
 
 .mobileCta {

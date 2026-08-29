@@ -1,33 +1,39 @@
 import { useEffect, useState } from 'react';
 
 export function useActiveSection(ids: readonly string[]) {
-  const [active, setActive] = useState(ids[0] ?? '');
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
+    const update = () => {
+      const header = document.querySelector('header');
+      const offset = (header?.getBoundingClientRect().height ?? 72) + 16;
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
 
-    if (elements.length === 0) return;
+      if (nearBottom) {
+        setActive(ids[ids.length - 1] ?? '');
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible[0]?.target.id) {
-          setActive(visible[0].target.id);
+      let current = '';
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= offset) {
+          current = id;
         }
-      },
-      {
-        rootMargin: '-35% 0px -50% 0px',
-        threshold: [0.1, 0.25, 0.5],
-      },
-    );
+      }
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      setActive(current);
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, [ids]);
 
   return active;
