@@ -129,8 +129,24 @@ ul {
 }
 
 .btn--primary {
+  position: relative;
+  overflow: hidden;
   background: var(--accent);
   color: var(--on-accent);
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 30%, rgb(255 255 255 / 0.38), transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 520ms var(--ease);
+}
+
+.btn--primary:hover::after {
+  transform: translateX(120%);
 }
 
 .btn--primary:hover {
@@ -220,5 +236,9 @@ ul {
   .btn:hover,
   .icon-btn:hover {
     transform: none;
+  }
+
+  .caret {
+    animation: none;
   }
 }

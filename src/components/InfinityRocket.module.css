@@ -1,0 +1,150 @@
+.wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.trail {
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 0 14;
+  opacity: 0.38;
+}
+
+.craft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 5.5rem;
+  aspect-ratio: 925 / 388;
+  will-change: transform;
+}
+
+.rocket {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fire {
+  position: absolute;
+  left: -10%;
+  top: 8%;
+  z-index: 2;
+  width: 46%;
+  height: 84%;
+  overflow: visible;
+  mix-blend-mode: plus-lighter;
+}
+
+.plume {
+  transform-origin: 78px 27px;
+  animation: plume 180ms ease-in-out infinite alternate;
+}
+
+.core {
+  transform-origin: 76px 27px;
+  animation: core 120ms ease-in-out infinite alternate;
+}
+
+.spark {
+  position: absolute;
+  left: 4%;
+  top: 46%;
+  z-index: 3;
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 50%;
+  background: #ffe566;
+  box-shadow: 0 0 6px 2px #ff8a1c;
+  animation: spark 520ms linear infinite;
+}
+
+.sparkTwo {
+  top: 38%;
+  animation-duration: 640ms;
+  animation-delay: -180ms;
+}
+
+.sparkThree {
+  top: 58%;
+  width: 0.2rem;
+  height: 0.2rem;
+  animation-duration: 480ms;
+  animation-delay: -320ms;
+}
+
+@keyframes plume {
+  from {
+    transform: scale(0.92, 1.08);
+  }
+  to {
+    transform: scale(1.14, 0.86);
+  }
+}
+
+@keyframes core {
+  from {
+    transform: scale(1.05, 0.9);
+  }
+  to {
+    transform: scale(0.88, 1.12);
+  }
+}
+
+@keyframes spark {
+  0% {
+    opacity: 0.9;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-1.4rem, 0.15rem) scale(0.3);
+  }
+}
+
+@media (max-width: 899px) {
+  .wrap {
+    inset: auto;
+    top: 3.75rem;
+    left: 50%;
+    width: min(22rem, 92vw);
+    height: 9.5rem;
+    translate: -50% 0;
+    opacity: 0.55;
+  }
+
+  .trail {
+    stroke-width: 3.5;
+    opacity: 0.5;
+  }
+
+  .craft {
+    width: 4.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plume,
+  .core,
+  .spark,
+  .sparkTwo,
+  .sparkThree {
+    animation: none;
+  }
+}
