@@ -1,8 +1,88 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(100% - 2rem, var(--max));
+  height: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+.header {
+  max-width: 42rem;
+  margin-bottom: 1.35rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.55rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  width: 1.6rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.eyebrow::after {
+  width: 2.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.intro {
+  margin-top: 0.7rem;
+  color: var(--ink-soft);
+  max-width: 38rem;
+}
+
+.ravenry {
+  isolation: isolate;
+  background-image: none;
+  background-color: #070605;
+}
+
+.ravenry::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgb(7 6 5 / 0.82), rgb(7 6 5 / 0.78)),
+    url('/got/hall.jpg') center / cover no-repeat;
+}
+
+.ravenry :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
 .panel {
   padding: 1.5rem 1.25rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--accent);
   border-radius: var(--radius);
-  background: var(--bg-elevated);
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgb(201 162 39 / 0.18);
 }
 
 .emailRow {
@@ -56,7 +136,7 @@
   min-height: 2.75rem;
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 0.28rem;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.92rem;
@@ -75,5 +155,49 @@
 @media (min-width: 800px) {
   .panel {
     padding: 2rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stage {
+    width: min(100% - 1.25rem, var(--max));
+    padding: 0.75rem 0 1.25rem;
+  }
+
+  .header {
+    margin-bottom: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .intro {
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
+  }
+
+  .panel {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .email {
+    font-size: 0.85rem;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .channels {
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+  }
+
+  .channel a,
+  .location {
+    min-height: 2rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
   }
 }

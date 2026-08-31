@@ -1,0 +1,123 @@
+.viewport {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #070605;
+  z-index: 10;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-x: hidden;
+  background-color: transparent;
+  background-image:
+    linear-gradient(rgb(7 6 5 / 0.48), rgb(7 6 5 / 0.48)),
+    url('/got/map.jpg');
+  background-size: cover;
+  background-position: center;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition:
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.exiting {
+  transform: scale(1.35);
+  opacity: 0;
+  filter: blur(14px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+.hidden {
+  transform: scale(0.65);
+  opacity: 0;
+  filter: blur(10px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- dots --- */
+
+.dots {
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.dot:hover {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+.dotActive {
+  background: var(--accent);
+}
+
+/* --- counter --- */
+
+.counter {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  color: var(--ink-faint);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 768px) {
+  .dots {
+    right: 0.4rem;
+    gap: 0.35rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .counter {
+    display: none;
+  }
+}

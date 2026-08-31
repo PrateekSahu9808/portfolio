@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './InfinityRocket.module.css';
 
 function lemniscate(t: number, scale: number) {
@@ -22,80 +22,13 @@ function buildInfinityPath(cx: number, cy: number, scale: number) {
   return parts.join(' ');
 }
 
-const LOOP_MS = 20000;
-const BODY_X = 61.44;
-const BODY_Y = 49.74;
-
-function RocketFire({ uid }: { uid: string }) {
-  const filter = `${uid}-distort`;
-  const glow = `${uid}-glow`;
-  const outer = `${uid}-outer`;
-  const inner = `${uid}-inner`;
-
-  return (
-    <svg className={styles.fire} viewBox="0 0 90 54" aria-hidden="true">
-      <defs>
-        <linearGradient id={outer} x1="1" y1="0.5" x2="0" y2="0.5">
-          <stop offset="0%" stopColor="#ffcf6a" />
-          <stop offset="28%" stopColor="#ff8a1c" />
-          <stop offset="62%" stopColor="#ff3d12" />
-          <stop offset="100%" stopColor="#ff3d12" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id={inner} x1="1" y1="0.5" x2="0" y2="0.5">
-          <stop offset="0%" stopColor="#fff7c2" />
-          <stop offset="35%" stopColor="#ffe566" />
-          <stop offset="70%" stopColor="#ff9a1f" />
-          <stop offset="100%" stopColor="#ff9a1f" stopOpacity="0" />
-        </linearGradient>
-        <filter id={glow} x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur stdDeviation="1.6" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id={filter} x="-30%" y="-50%" width="160%" height="200%">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.055 0.14"
-            numOctaves="3"
-            seed="4"
-            result="noise"
-          >
-            <animate
-              attributeName="baseFrequency"
-              dur="0.28s"
-              values="0.05 0.12;0.1 0.2;0.045 0.16;0.05 0.12"
-              repeatCount="indefinite"
-            />
-          </feTurbulence>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="11" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-      </defs>
-      <g filter={`url(#${glow})`}>
-        <path
-          className={styles.plume}
-          fill={`url(#${outer})`}
-          filter={`url(#${filter})`}
-          d="M78 27C76 11 46 6 10 27c36 20 66 16 68 0Z"
-        />
-        <path
-          className={styles.core}
-          fill={`url(#${inner})`}
-          filter={`url(#${filter})`}
-          d="M76 27C74 17 52 14 24 27c28 12 50 10 52 0Z"
-        />
-      </g>
-    </svg>
-  );
-}
+const LOOP_MS = 22000;
 
 export function InfinityRocket() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const trailRef = useRef<SVGPathElement>(null);
-  const craftRef = useRef<HTMLDivElement>(null);
-  const uid = useId().replace(/:/g, '');
+  const craftRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -128,11 +61,10 @@ export function InfinityRocket() {
       const x = path.cx + current.x;
       const y = path.cy + current.y;
       const angle = Math.atan2(ahead.y - current.y, ahead.x - current.x);
-      craft.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-${BODY_X}%, -${BODY_Y}%) rotate(${angle}rad)`;
+      craft.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${angle}rad)`;
       frame = window.requestAnimationFrame(tick);
     };
 
-    craft.style.transformOrigin = `${BODY_X}% ${BODY_Y}%`;
     layout();
     frame = window.requestAnimationFrame(tick);
 
@@ -151,13 +83,7 @@ export function InfinityRocket() {
       <svg ref={svgRef} className={styles.scene}>
         <path ref={trailRef} className={styles.trail} fill="none" />
       </svg>
-      <div ref={craftRef} className={styles.craft}>
-        <RocketFire uid={uid} />
-        <span className={styles.spark} />
-        <span className={`${styles.spark} ${styles.sparkTwo}`} />
-        <span className={`${styles.spark} ${styles.sparkThree}`} />
-        <img className={styles.rocket} src="/rocket.png" alt="" />
-      </div>
+      <img ref={craftRef} className={styles.raven} src="/got/raven.png" alt="" />
     </div>
   );
 }

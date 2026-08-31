@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { IconArrowUp } from './Icons';
 import styles from './BackToTop.module.css';
 
 export function BackToTop() {
@@ -19,8 +18,10 @@ export function BackToTop() {
       aria-label="Back to top"
       tabIndex={visible ? 0 : -1}
     >
-      <span className={styles.icon}>
-        <IconArrowUp size={18} />
+      <span className={styles.icon} aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+          <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </span>
     </a>
   );
