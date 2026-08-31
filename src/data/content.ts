@@ -116,7 +116,11 @@ export const experience = [
     bullets: [
       'Completed guided coding assignments and mini-projects under senior developer mentorship to build practical proficiency in web development fundamentals.',
     ],
-    technologies: [],
+    technologies: [
+      'React.js',
+      'Context API',
+      'Responsive Design',
+    ],
   },
 ] as const;
 

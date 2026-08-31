@@ -5,26 +5,21 @@ export function useActiveSection(ids: readonly string[]) {
 
   useEffect(() => {
     const update = () => {
-      const header = document.querySelector('header');
-      const offset = (header?.getBoundingClientRect().height ?? 72) + 16;
-      const nearBottom =
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
-
-      if (nearBottom) {
-        setActive(ids[ids.length - 1] ?? '');
+      const x = Math.min(window.innerWidth / 2, window.innerWidth - 12);
+      const y = window.innerHeight * 0.42;
+      const hit = document.elementFromPoint(x, y);
+      const scene = hit?.closest('[data-nav], section[id]');
+      const id = scene instanceof HTMLElement ? (scene.dataset.nav || scene.id) : '';
+      if (ids.includes(id)) {
+        setActive(id);
         return;
       }
 
-      let current = '';
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top <= offset) {
-          current = id;
-        }
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24;
+      if (nearBottom) {
+        setActive(ids[ids.length - 1] ?? '');
       }
-
-      setActive(current);
     };
 
     update();

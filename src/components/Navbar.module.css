@@ -1,12 +1,14 @@
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 40;
   height: var(--header-h);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: blur(14px);
   transition: box-shadow 200ms var(--ease), border-color 200ms var(--ease);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 .scrolled {
@@ -30,19 +32,12 @@
   min-width: 0;
 }
 
-.mark {
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+.sigil {
+  width: 2.35rem;
+  height: 2.35rem;
   flex-shrink: 0;
-  border-radius: 0.45rem;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgb(201 162 39 / 0.35));
 }
 
 .brandText {
@@ -53,8 +48,10 @@
 }
 
 .brandName {
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.92rem;
+  letter-spacing: 0.04em;
 }
 
 .brandRole {
@@ -72,10 +69,13 @@
 .navLink {
   padding: 0.45rem 0.7rem;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-decoration: none;
-  border-radius: 999px;
+  border-radius: 0.2rem;
   transition: color 180ms var(--ease), background-color 180ms var(--ease);
 }
 

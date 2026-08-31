@@ -5,19 +5,20 @@
 }
 
 html {
-  scroll-behavior: smooth;
   color-scheme: dark;
-  background: #000000;
+  background: #070605;
+  scrollbar-width: none;
 }
 
-html:focus-within {
-  scroll-behavior: smooth;
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -62,24 +63,6 @@ ul {
   outline-offset: 3px;
 }
 
-.skip-link {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 1000;
-  padding: 0.6rem 0.9rem;
-  background: var(--ink);
-  color: var(--bg);
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 0.4rem;
-  transform: translateY(-150%);
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -110,7 +93,7 @@ ul {
   gap: 0.5rem;
   min-height: 2.85rem;
   padding: 0.7rem 1.2rem;
-  border-radius: 999px;
+  border-radius: 0.28rem;
   border: 1px solid transparent;
   font-weight: 600;
   font-size: 0.95rem;
@@ -171,7 +154,7 @@ ul {
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 999px;
+  border-radius: 0.28rem;
   border: 1px solid var(--line);
   color: var(--ink);
   background: transparent;
@@ -201,44 +184,19 @@ ul {
   letter-spacing: 0.01em;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 700ms var(--ease),
-    transform 700ms var(--ease);
-}
+/* --- GOT global animations --- */
 
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
+@keyframes gotRavenFly {
+  0% { opacity: 0; transform: translateX(-60px) translateY(0) rotate(-5deg) scaleX(-1); }
+  15% { opacity: 0.9; }
+  50% { opacity: 1; transform: translateX(50vw) translateY(-30px) rotate(3deg) scaleX(-1); }
+  85% { opacity: 0.4; }
+  100% { opacity: 0; transform: translateX(105vw) translateY(-10px) rotate(-2deg) scaleX(-1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
   .btn:hover,
   .icon-btn:hover {
     transform: none;
-  }
-
-  .caret {
-    animation: none;
   }
 }

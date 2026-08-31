@@ -1,23 +1,25 @@
 import { profile } from '../data/content';
-import { Reveal } from '../components/Reveal';
 import { Section } from '../components/Section';
+import { Parallax } from '../components/Parallax';
+import { TextReveal } from '../components/TextReveal';
 import styles from './About.module.css';
 
 export function About() {
   return (
     <Section
       id="about"
-      eyebrow="01 / About"
-      title="Frontend engineering at production scale"
+      eyebrow="About"
+      title="The North"
     >
       <div className={styles.layout}>
-        <Reveal className={styles.copy}>
+        <div className={styles.copy}>
           {profile.about.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <TextReveal key={paragraph} text={paragraph} className={styles.paragraph} />
           ))}
-        </Reveal>
-        <Reveal className={styles.aside} delay={120}>
-          <h3 className={styles.asideTitle}>What I bring</h3>
+        </div>
+        <Parallax speed={-0.2} className={styles.aside}>
+          <img className={styles.portrait} src="/got/north.jpg" alt="" />
+          <h3 className={styles.asideTitle}>The Banners I Carry</h3>
           <ul className={styles.points}>
             <li>Micro frontend architecture with Module Federation</li>
             <li>Reusable React systems in TypeScript, Storybook, and Next.js</li>
@@ -25,7 +27,7 @@ export function About() {
             <li>Core Web Vitals, WCAG accessibility, and React Testing Library</li>
             <li>Mentoring, Figma collaboration, and Agile delivery</li>
           </ul>
-        </Reveal>
+        </Parallax>
       </div>
     </Section>
   );

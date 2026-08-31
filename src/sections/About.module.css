@@ -5,27 +5,52 @@
 
 .copy {
   display: grid;
-  gap: 1rem;
-  color: var(--ink-soft);
+  gap: 0.75rem;
   max-width: 42rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgb(20 17 14 / 0.88), rgb(20 17 14 / 0.94)),
+    url('/got/map.jpg') center / cover;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.paragraph {
+  line-height: 1.65;
 }
 
 .aside {
-  padding: 1.4rem 1.3rem;
+  overflow: hidden;
+  padding: 0 0 1.3rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--bg-elevated);
+  background:
+    linear-gradient(rgb(20 17 14 / 0.88), rgb(20 17 14 / 0.94)),
+    url('/got/map.jpg') center / cover;
+}
+
+.portrait {
+  width: 100%;
+  height: 7.5rem;
+  margin-bottom: 1.1rem;
+  object-fit: cover;
 }
 
 .asideTitle {
-  margin-bottom: 0.85rem;
+  margin: 0 1.3rem 0.85rem;
+  font-family: var(--font-display);
   font-size: 0.92rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .points {
   display: grid;
   gap: 0.75rem;
+  margin: 0 1.3rem;
 }
 
 .points li {
@@ -51,5 +76,28 @@
     grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
     gap: 3rem;
     align-items: start;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    gap: 0.5rem;
+  }
+
+  .copy {
+    font-size: 0.78rem;
+    gap: 0.4rem;
+  }
+
+  .paragraph {
+    line-height: 1.4;
+  }
+
+  .paragraph:nth-child(n + 2) {
+    display: none;
+  }
+
+  .aside {
+    display: none;
   }
 }

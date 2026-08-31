@@ -1,147 +1,184 @@
-.timeline {
-  --rail: 0.7rem;
-  --gutter: 2.15rem;
-  position: relative;
-  display: grid;
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0 0 0 var(--gutter);
-  list-style: none;
+.stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(100% - 2rem, var(--max));
+  height: 100%;
+  min-height: 0;
+  margin-inline: auto;
+  padding: 2rem 0;
+  overflow: hidden;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0.35rem;
-  bottom: 0.35rem;
-  left: var(--rail);
-  width: 1px;
-  background: var(--line);
-  transform: translateX(-50%);
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.item {
-  position: relative;
-}
-
-.item::before {
-  content: '';
-  position: absolute;
-  top: 1.45rem;
-  left: calc(var(--rail) - var(--gutter));
-  z-index: 1;
-  width: 0.7rem;
-  height: 0.7rem;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  background: transparent;
-  box-sizing: border-box;
-  transform: translateX(-50%);
-}
-
-.card {
-  padding: 1.4rem 1.2rem 1.3rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-elevated);
-  transition: border-color 200ms var(--ease), transform 200ms var(--ease);
-}
-
-.card:hover {
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-}
-
-.head {
-  margin-bottom: 0.85rem;
-}
-
-.role {
-  color: var(--mark);
-  font-size: 0.78rem;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px rgb(0 0 0 / 0.7);
+}
+
+.swordLeft {
+  color: var(--accent);
+  flex-shrink: 0;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 0 8px rgb(201 162 39 / 0.7));
+}
+
+.swordRight {
+  color: var(--accent);
+  flex-shrink: 0;
+  transform: rotate(45deg) scaleX(-1);
+  filter: drop-shadow(0 0 8px rgb(201 162 39 / 0.7));
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
-.badge {
-  color: var(--ink-soft);
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.card {
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(rgb(20 17 14 / 0.88), rgb(20 17 14 / 0.94)),
+    url('/got/map.jpg') center / cover;
+  transition:
+    transform 220ms var(--ease),
+    border-color 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  box-shadow: var(--shadow);
+}
+
+.cardHeader {
+  margin-bottom: 0.6rem;
+}
+
+.dates {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.company {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.role {
+  margin-top: 0.15rem;
+  color: var(--mark);
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
 
-.company {
-  margin-top: 0.25rem;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
+.badge {
+  color: var(--ink-soft);
+  font-weight: 400;
 }
 
-.parent {
+.location {
   color: var(--ink-soft);
-  font-weight: 500;
-  font-size: 0.92rem;
-}
-
-.meta {
-  margin-top: 0.3rem;
-  color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 0.72rem;
 }
 
 .summary {
-  margin-bottom: 0.95rem;
   color: var(--ink-soft);
-}
-
-.bullets {
-  display: grid;
-  gap: 0.55rem;
-  margin-bottom: 1.1rem;
-}
-
-.bullets li {
-  position: relative;
-  padding-left: 1rem;
-  color: var(--ink);
-  font-size: 0.97rem;
-}
-
-.bullets li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6rem;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 99px;
-  background: var(--accent);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
 }
 
 .tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
-@media (min-width: 800px) {
-  .timeline {
-    --rail: 0.85rem;
-    --gutter: 2.5rem;
-    gap: 1.6rem;
+.tech li {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .stage {
+    width: min(100% - 1.25rem, var(--max));
+    padding: 0.75rem 0 1.25rem;
   }
 
-  .item::before {
-    top: 1.7rem;
+  .header {
+    margin-bottom: 0.55rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+    gap: 0.5rem;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
   }
 
   .card {
-    padding: 1.7rem 1.6rem 1.5rem;
+    padding: 0.5rem 0.65rem;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .card:hover {
-    transform: none;
-    transition: none;
+  .cardHeader {
+    margin-bottom: 0;
+  }
+
+  .company {
+    font-size: 0.88rem;
+  }
+
+  .role {
+    font-size: 0.7rem;
+  }
+
+  .location,
+  .summary,
+  .tech {
+    display: none;
   }
 }

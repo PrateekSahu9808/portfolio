@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLenis } from 'lenis/react';
 import { navLinks, profile } from '../data/content';
 import { useActiveSection } from '../hooks/useActiveSection';
 import styles from './Navbar.module.css';
@@ -11,6 +12,7 @@ export function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const active = useActiveSection(sectionIds);
+  const lenis = useLenis();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -21,10 +23,13 @@ export function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+    if (open) lenis?.stop();
+    else lenis?.start();
     return () => {
       document.body.style.overflow = '';
+      lenis?.start();
     };
-  }, [open]);
+  }, [open, lenis]);
 
   useEffect(() => {
     const onResize = () => {
@@ -56,9 +61,7 @@ export function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         <a className={styles.brand} href="#top">
-          <span className={styles.mark} aria-hidden="true">
-            PS
-          </span>
+          <img className={styles.sigil} src="/got/sigil.png" alt="" width={40} height={40} />
           <span className={styles.brandText}>
             <span className={styles.brandName}>{profile.name}</span>
             <span className={styles.brandRole}>{profile.title}</span>
@@ -104,6 +107,7 @@ export function Navbar() {
         ref={menuRef}
         className={`${styles.mobile} ${open ? styles.mobileOpen : ''}`}
         hidden={!open}
+        data-lenis-prevent={open ? '' : undefined}
       >
         <nav className={styles.mobileNav} aria-label="Mobile">
           {navLinks.map((link) => (
