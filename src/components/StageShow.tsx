@@ -130,8 +130,11 @@ export function StageShow({ children }: { children: ReactNode }) {
       const href = link.getAttribute('href');
       if (!href || href.length < 2) return;
 
+      const viewport = viewportRef.current;
+      if (!viewport) return;
+
       const id = href.slice(1);
-      const slideEls = el.querySelectorAll<HTMLElement>('[data-slide]');
+      const slideEls = viewport.querySelectorAll<HTMLElement>('[data-slide]');
       let index = -1;
       slideEls.forEach((slide, i) => {
         if (slide.querySelector(`#${CSS.escape(id)}`)) index = i;

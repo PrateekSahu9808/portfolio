@@ -47,7 +47,7 @@ export function Experience() {
         </motion.header>
 
         <div className={styles.timeline}>
-          {experience.map((job, i) => (
+          {experience.map((job) => (
             <motion.article key={job.id} className={styles.card} variants={fadeUp}>
               <div className={styles.cardHeader}>
                 <span className={styles.dates}>{job.start} — {job.end}</span>
